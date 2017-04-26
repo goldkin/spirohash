@@ -1,4 +1,4 @@
-## Human-readable hashing for images
+## Spirohash: human-readable hashing for images
 
 Spirohash provides a human-readable, color-agnostic hash for images, providing a signature from an image itself. This signature follows the [Golden Ratio](https://en.wikipedia.org/wiki/Golden_ratio) and [Rule of Thirds](https://en.wikipedia.org/wiki/Rule_of_thirds), allowing artists to prove their ownership of a work and provide attribution to search engines using the same method the human eye uses to process an image.
 

@@ -38,8 +38,8 @@ def hash(args):
     assert(quadrant >= 0)
     assert(quadrant <= 3)
 
-    x_origin = int(image_to_hash.size[0] / 3) * 1 + (quadrant % 2)
-    y_origin = int(image_to_hash.size[1] / 3) * 1 + ((2 - quadrant)**2 < 4)
+    x_origin = int(image_to_hash.size[0] / 3) * (1 + (quadrant % 2))
+    y_origin = int(image_to_hash.size[1] / 3) * (1 + ((2 - quadrant)**2 < 4))
 
     bins = defaultdict(int)
     current = [x_origin, y_origin]

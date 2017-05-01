@@ -2,13 +2,22 @@
 
 Spirohash provides a human-readable, color-agnostic hash for images, providing a signature from an image itself. This signature follows the [Golden Ratio](https://en.wikipedia.org/wiki/Golden_ratio) and [Rule of Thirds](https://en.wikipedia.org/wiki/Rule_of_thirds), allowing artists to prove their ownership of a work and provide attribution to search engines using the same method the human eye uses to process an image.
 
-This library traces a spiral around the subject of an image, computing the ratio of its most common colors (in selectable, but typically 16-bit, colorspace). This ratio, calculated from the subject of the image itself, can be then used to assist search engines and prove original ownership when provided at the same time an image is published. The color values of the most common ratios are provided in human-readable form as part of the signature, tolerating imprecision when an image is cropped, flipped, rotated, or when its colors are altered.
+This library samples pixels from a Golden Ratio spiral traced around an image, computing a hash based on the most common colors encountered. When placed on the subject of the image itself, this can be used to assist search engines by providing metadata about what the human eye sees. Generating a hash and placing it with your work can also identify you as its original owner, should someone search for a same or similar hash in Google.
 
-While useful, this approach has some limitations. Most notably, this can only be applied to a work itself; stolen _designs_, _remixes_, and _derivative works_ cannot be detected by this tool, nor are they protected by law in many jurisdictions. The sole purpose of this tool is to aid the discovery of and reconciliation of routine art theft, including publication of a complete original work without attribution.
+Thus, this tool seeks to aid the attribution of an original image, by helping artists provide both search metadata and unambiguous proof of ownership. This library does _not_ replace the function of copyright, nor does it act as a watermark.
 
-## Code Example
+This hash is also designed to be resilient to common attempts to obscure attribution. This means tolerating imprecision when an image is cropped, flipped, rotated, or when its colors are altered.
 
-TODO
+This hash _will_ fail if color values are radically altered, noise is injected to the image itself, or the subject of the image is itself changed. Stolen _designs_, _remixes_, and _derivative works_ cannot be detected by this tool. The sole purpose of this tool is instead to aid the discovery of and reconciliation of routine art theft, including detecting publication of a complete original work without attribution.
+
+## Sample Usage
+
+Currently, this tool has no fancy frontend and must be run from the command line. It is invoked with two args: the image file to process, and the quadrant where the subject can be found (1 through 4). Any rectangular image format supported by [PIL](http://www.pythonware.com/products/pil/) is supported by this tool.
+
+```
+$ python spirohash.py my_test_image.jpg 1
+This image's hash is SPRO261B19171312100F0D
+```
 
 ## Motivation
 
@@ -18,7 +27,7 @@ Because this relies on subject selection and the aesthetic properties of the hum
 
 ## Installation
 
-Simply install [Python](https://www.python.org/), [ImageMagick](https://www.imagemagick.org/script/index.php), [PythonMagick](https://wiki.python.org/moin/ImageMagick), and clone this repository. See the code example above for how to run the tool.
+Simply install [Python](https://www.python.org/), [PIL](http://www.pythonware.com/products/pil/), and clone this repository. See sample usage above for how to run the tool.
 
 ## Contributing
 
